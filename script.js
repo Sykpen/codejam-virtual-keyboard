@@ -19,6 +19,14 @@ let keyLayout = [
     "cntrl","win","alt","space","alt","win","←","↓","→","cntrl"
 ];
 
+let keyLayoutru = [
+    "ё","1", "2", "3", "4", "5", "6", "7", "8", "9", "0","-","+", "back",
+    "tab","й", "ц", "у", "к", "е", "н", "г", "ш", "щ", "з","х","ъ","\\",
+    "caps", "ф", "ы", "в", "а", "п", "р", "о", "л", "д","ж","э", "enter",
+    "shift", "я", "ч", "с", "м", "и", "т", "ь", "б", "ю", ".","↑","shift",
+    "cntrl","win","alt","space","alt","win","←","↓","→","cntrl"
+];
+
 const keyboard = [
     192, 49, 50, 51, 52, 53, 54, 55, 56, 57, 48, 189, 187, 8,
     9, 81, 87, 69, 82, 84, 89, 85, 73, 79, 80, 219, 221, 220,
@@ -31,7 +39,7 @@ let keyCode = [ 'Backquote', 'Digit1', 'Digit2', 'Digit3', 'Digit4', 'Digit5', '
 'Tab', 'KeyQ', 'KeyW', 'KeyE', 'KeyR', 'KeyT', 'KeyY', 'KeyU', 'KeyI', 'KeyO', 'KeyP', 'BracketLeft', 'BracketRight', 'Backslash', 
 'CapsLock', 'KeyA', 'KeyS', 'KeyD', 'KeyF', 'KeyG', 'KeyH', 'KeyJ', 'KeyK', 'KeyL', 'Semicolon', 'Quote', 'Enter', 
 'ShiftLeft', 'KeyZ', 'KeyX', 'KeyC', 'KeyV', 'KeyB', 'KeyN', 'KeyM', 'Comma', 'Period', 'Slash', 'ArrowUp', 'ShiftRight',
-'ControlLeft', 'MetaLeft', 'AltLeft', 'Space', 'AltRight', 'ArrowLeft','MetaRight', 'ArrowDown', 'ArrowRight', 'ControlRight' ];
+'ControlLeft', 'MetaLeft', 'AltLeft', 'Space', 'AltRight', 'MetaRight','ArrowLeft', 'ArrowDown', 'ArrowRight', 'ControlRight' ];
 
 let i = 0;
 keyLayout.forEach(function keyKreation(key){
@@ -45,7 +53,7 @@ keyLayout.forEach(function keyKreation(key){
     
     switch(key){
         case "back":
-        keyElement.classList.add("big");
+        keyElement.classList.add("big");      
     break;
     case "tab":
         keyElement.classList.add("big");
@@ -67,25 +75,48 @@ keyLayout.forEach(function keyKreation(key){
 
 row.addEventListener("mousedown", function(event){
     let target = event.target.closest('div');
-    console.log(target);
     if (target.className === 'row') return;
+    
     target.classList.add("selected");
-    writingarea.value += target.innerText;
-});
-row.addEventListener("mouseout", function(event){
+
+    if(target.innerText == "back"){
+        writingarea.value = writingarea.value.substring(0,writingarea.value.length-1);
+    } else if(target.innerText == "space"){
+        writingarea.value += " ";
+    }else if(target.innerText == "enter"){
+        writingarea.value += "\n";
+    }else if(target.innerText == "tab"){
+        writingarea.value += "\t";
+    }else if(target.innerText == "caps"){
+        event.preventDefault;
+    }else if(target.innerText == "cntrl"){
+        event.preventDefault;
+    }else if(target.innerText == "win"){
+        event.preventDefault;
+    }else if(target.innerText == "alt"){
+        event.preventDefault;
+    }else if(target.innerText == "shift"){
+        event.preventDefault;
+    }else{
+     writingarea.value += target.innerText;
+     console.log(target.innerText);
+    };
+    });
+row.addEventListener("mouseup", function(event){
     let target = event.target.closest('div');
     if (target.className === 'row') return;
     target.classList.remove("selected");
+    writingarea.focus();
 })   
 
 document.addEventListener('keydown', function(event) {
-    //   if (event.code === 'CapsLock') {
-    //     return;
-    // }
+      writingarea.focus();
       const code = event.code;
       const codeClass = document.querySelector('.' + code);
-       console.log(codeClass);
-       codeClass.classList.add('selected');      
+      codeClass.classList.add('selected');
+ 
+      writingarea.append(event.key);
+      console.log(event.which)   
      });
      
      document.addEventListener('keyup', function(event) {
@@ -93,13 +124,6 @@ document.addEventListener('keydown', function(event) {
         const codeClass = document.querySelector('.' + code);
        codeClass.classList.remove('selected');
      });
-// enter  = \n
-// tab = \t
-// for delete  textArea.value.slice(0,textArea.length-1);
-document.addEventListener('keydown', function(event) {
-    writingarea.append(event.key);
-    console.log(event.which);
-  });
 }
 
 createmain();
