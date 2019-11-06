@@ -31,3 +31,10 @@
 .selected{
     background-color: red;
 }
+.writingarea{
+    display: block;
+    margin:0 auto;
+    width: 920px;
+    height: 300px;
+    margin-bottom: 50px;
+}
