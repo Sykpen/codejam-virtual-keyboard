@@ -1,131 +1,124 @@
-function createmain (){
-let writingarea = document.createElement('textarea');
-writingarea.classList.add('writingarea');
-document.body.append(writingarea);
+function createmain() {
+  const writingarea = document.createElement('textarea');
+  writingarea.classList.add('writingarea');
+  document.body.append(writingarea);
 
-let mainwrapper = document.createElement('div');
-mainwrapper.classList.add('mainback');
-document.body.append(mainwrapper);
+  const mainwrapper = document.createElement('div');
+  mainwrapper.classList.add('mainback');
+  document.body.append(mainwrapper);
 
-let row = document.createElement('div');
-row.classList.add('row');
-mainwrapper.append(row);
+  const row = document.createElement('div');
+  row.classList.add('row');
+  mainwrapper.append(row);
 
-let keyLayout = [
-    "~","1", "2", "3", "4", "5", "6", "7", "8", "9", "0","-","+", "back",
-    "tab","q", "w", "e", "r", "t", "y", "u", "i", "o", "p","[","]","/",
-    "caps", "a", "s", "d", "f", "g", "h", "j", "k", "l",";","'", "enter",
-    "shift", "z", "x", "c", "v", "b", "n", "m", ",", ".", "?","↑","shift",
-    "cntrl","win","alt","space","alt","win","←","↓","→","cntrl"
-];
+  const keyLayout = [
+    '~', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '+', 'back',
+    'tab', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', '/',
+    'caps', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', "'", 'enter',
+    'shift', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '?', '↑', 'shift',
+    'cntrl', 'win', 'alt', 'space', 'alt', 'win', '←', '↓', '→', 'cntrl',
+  ];
 
-let keyLayoutru = [
-    "ё","1", "2", "3", "4", "5", "6", "7", "8", "9", "0","-","+", "back",
-    "tab","й", "ц", "у", "к", "е", "н", "г", "ш", "щ", "з","х","ъ","\\",
-    "caps", "ф", "ы", "в", "а", "п", "р", "о", "л", "д","ж","э", "enter",
-    "shift", "я", "ч", "с", "м", "и", "т", "ь", "б", "ю", ".","↑","shift",
-    "cntrl","win","alt","space","alt","win","←","↓","→","cntrl"
-];
+  //   let keyLayoutru = [
+  //     'ё', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '+', 'back',
+  //     'tab', 'й', 'ц', 'у', 'к', 'е', 'н', 'г', 'ш', 'щ', 'з', 'х', 'ъ', '\\',
+  //     'caps', 'ф', 'ы', 'в', 'а', 'п', 'р', 'о', 'л', 'д', 'ж', 'э', 'enter',
+  //     'shift', 'я', 'ч', 'с', 'м', 'и', 'т', 'ь', 'б', 'ю', '.', '↑', 'shift',
+  //     'cntrl', 'win', 'alt', 'space', 'alt', 'win', '←', '↓', '→', 'cntrl',
+  // ];
 
-const keyboard = [
-    192, 49, 50, 51, 52, 53, 54, 55, 56, 57, 48, 189, 187, 8,
-    9, 81, 87, 69, 82, 84, 89, 85, 73, 79, 80, 219, 221, 220,
-    20, 65, 83, 68, 70, 71, 72, 74, 75, 76, 186, 222, 13,
-    16, 90, 88, 67, 86, 66 , 78, 77, 188, 190, 191, 38, 16, 
-    17, 91, 18, 32, 18, 91, 37, 40, 39, 17
-];
+  //   const keyboard = [
+  //     192, 49, 50, 51, 52, 53, 54, 55, 56, 57, 48, 189, 187, 8,
+  //     9, 81, 87, 69, 82, 84, 89, 85, 73, 79, 80, 219, 221, 220,
+  //     20, 65, 83, 68, 70, 71, 72, 74, 75, 76, 186, 222, 13,
+  //     16, 90, 88, 67, 86, 66, 78, 77, 188, 190, 191, 38, 16,
+  //     17, 91, 18, 32, 18, 91, 37, 40, 39, 17,
+  // ];
 
-let keyCode = [ 'Backquote', 'Digit1', 'Digit2', 'Digit3', 'Digit4', 'Digit5', 'Digit6', 'Digit7', 'Digit8', 'Digit9', 'Digit0', 'Minus', 'Equal', 'Backspace',
-'Tab', 'KeyQ', 'KeyW', 'KeyE', 'KeyR', 'KeyT', 'KeyY', 'KeyU', 'KeyI', 'KeyO', 'KeyP', 'BracketLeft', 'BracketRight', 'Backslash', 
-'CapsLock', 'KeyA', 'KeyS', 'KeyD', 'KeyF', 'KeyG', 'KeyH', 'KeyJ', 'KeyK', 'KeyL', 'Semicolon', 'Quote', 'Enter', 
-'ShiftLeft', 'KeyZ', 'KeyX', 'KeyC', 'KeyV', 'KeyB', 'KeyN', 'KeyM', 'Comma', 'Period', 'Slash', 'ArrowUp', 'ShiftRight',
-'ControlLeft', 'MetaLeft', 'AltLeft', 'Space', 'AltRight', 'MetaRight','ArrowLeft', 'ArrowDown', 'ArrowRight', 'ControlRight' ];
+  const keyCode = ['Backquote', 'Digit1', 'Digit2', 'Digit3', 'Digit4', 'Digit5', 'Digit6', 'Digit7', 'Digit8', 'Digit9', 'Digit0', 'Minus', 'Equal', 'Backspace',
+    'Tab', 'KeyQ', 'KeyW', 'KeyE', 'KeyR', 'KeyT', 'KeyY', 'KeyU', 'KeyI', 'KeyO', 'KeyP', 'BracketLeft', 'BracketRight', 'Backslash',
+    'CapsLock', 'KeyA', 'KeyS', 'KeyD', 'KeyF', 'KeyG', 'KeyH', 'KeyJ', 'KeyK', 'KeyL', 'Semicolon', 'Quote', 'Enter',
+    'ShiftLeft', 'KeyZ', 'KeyX', 'KeyC', 'KeyV', 'KeyB', 'KeyN', 'KeyM', 'Comma', 'Period', 'Slash', 'ArrowUp', 'ShiftRight',
+    'ControlLeft', 'MetaLeft', 'AltLeft', 'Space', 'AltRight', 'MetaRight', 'ArrowLeft', 'ArrowDown', 'ArrowRight', 'ControlRight',
+  ];
 
-let i = 0;
-keyLayout.forEach(function keyKreation(key){
-    let keyElement = document.createElement("div");
+  let i = 0;
+  keyLayout.forEach((key) => {
+    const keyElement = document.createElement('div');
     keyElement.append(key);
-    
+
     keyElement.classList.add(keyCode[i]);
-    i++;
-    keyElement.classList.add("cell");
+    i += 1;
+    keyElement.classList.add('cell');
     row.append(keyElement);
-    
-    switch(key){
-        case "back":
-        keyElement.classList.add("big");      
-    break;
-    case "tab":
-        keyElement.classList.add("big");
-    break;
-    case "caps":
-        keyElement.classList.add("big");
-    break;
-    case "enter":
-        keyElement.classList.add("big");
-    break;
-    case "shift":
-        keyElement.classList.add("big");
-    break;
-    case "space":
-        keyElement.classList.add("space");
-    break;          
-    }  
-});
 
-row.addEventListener("mousedown", function(event){
-    let target = event.target.closest('div');
-    if (target.className === 'row') return;
-    
-    target.classList.add("selected");
+    // eslint-disable-next-line default-case
+    switch (key) {
+      case 'back':
+        keyElement.classList.add('big');
+        break;
+      case 'tab':
+        keyElement.classList.add('big');
+        break;
+      case 'caps':
+        keyElement.classList.add('big');
+        break;
+      case 'enter':
+        keyElement.classList.add('big');
+        break;
+      case 'shift':
+        keyElement.classList.add('big');
+        break;
+      case 'space':
+        keyElement.classList.add('space');
+        break;
+    }
+  });
 
-    if(target.innerText == "back"){
-        writingarea.value = writingarea.value.substring(0,writingarea.value.length-1);
-    } else if(target.innerText == "space"){
-        writingarea.value += " ";
-    }else if(target.innerText == "enter"){
-        writingarea.value += "\n";
-    }else if(target.innerText == "tab"){
-        writingarea.value += "\t";
-    }else if(target.innerText == "caps"){
-        event.preventDefault;
-    }else if(target.innerText == "cntrl"){
-        event.preventDefault;
-    }else if(target.innerText == "win"){
-        event.preventDefault;
-    }else if(target.innerText == "alt"){
-        event.preventDefault;
-    }else if(target.innerText == "shift"){
-        event.preventDefault;
-    }else{
-     writingarea.value += target.innerText;
-     console.log(target.innerText);
-    };
-    });
-row.addEventListener("mouseup", function(event){
-    let target = event.target.closest('div');
+  row.addEventListener('mousedown', (event) => {
+    const target = event.target.closest('div');
     if (target.className === 'row') return;
-    target.classList.remove("selected");
+
+    target.classList.add('selected');
+
+    if (target.innerText === 'back') {
+      writingarea.value = writingarea.value.substring(0, writingarea.value.length - 1);
+    } else if (target.innerText === 'space') {
+      writingarea.value += ' ';
+    } else if (target.innerText === 'enter') {
+      writingarea.value += '\n';
+    } else if (target.innerText === 'tab') {
+      event.preventDefault();
+      writingarea.value += '\t';
+    } else if (target.innerText !== 'caps'
+    && target.innerText !== 'cntrl'
+    && target.innerText !== 'win'
+    && target.innerText !== 'alt'
+    && target.innerText !== 'shift') {
+      writingarea.value += target.innerText;
+    }
+  });
+  row.addEventListener('mouseup', (event) => {
+    const target = event.target.closest('div');
+    if (target.className === 'row') return;
+    target.classList.remove('selected');
     writingarea.focus();
-})   
+  });
 
-document.addEventListener('keydown', function(event) {
-      writingarea.focus();
-      const code = event.code;
-      const codeClass = document.querySelector('.' + code);
-      codeClass.classList.add('selected');
- 
-      writingarea.append(event.key);
-      console.log(event.which)   
-     });
-     
-     document.addEventListener('keyup', function(event) {
-        const code = event.code;
-        const codeClass = document.querySelector('.' + code);
-       codeClass.classList.remove('selected');
-     });
+  document.addEventListener('keydown', (event) => {
+    writingarea.focus();
+    const { code } = event;
+    const codeClass = document.querySelector(`.${code}`);
+    codeClass.classList.add('selected');
+
+    writingarea.append(event.key);
+  });
+
+  document.addEventListener('keyup', (event) => {
+    const { code } = event;
+    const codeClass = document.querySelector(`.${code}`);
+    codeClass.classList.remove('selected');
+  });
 }
 
 createmain();
-
-
